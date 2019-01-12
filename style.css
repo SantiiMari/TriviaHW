@@ -16,3 +16,10 @@
 body {
     background:grey;
 }
+
+.redBtn {
+    color: black;
+    background-color: pink;
+    margin: 5px;
+    padding: 10px;
+}
