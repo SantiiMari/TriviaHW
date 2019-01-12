@@ -45,17 +45,18 @@ var qA = {
 
 var start = function () {
     $('.startBtn').on('click', function () {
-        alert('Yo!');
+        // debugging...ran 'alert('Yo!');' to confirm link
 
-        // $('.trivSection').empty();
-        // createQuestions();
+        $('.trivSection').empty();
+        createQuestions();
 
     });
 
 }
 
 var createQuestions = function () {
-    var questions = qA[qACount]['question'];
+    timerStart();
+    var question = qA[qACount]['question'];
     var newDiv = $('<div>');
     newDiv.addClass('question');
     newDiv.text(question);
@@ -65,7 +66,7 @@ var createQuestions = function () {
 
 var createAnswers = function () {
     var answerLength = qa[qACount]['answers'].length;
-    for (var i = 0; i < answersLength; i++) {
+    for (var i = 0; i < answerLength; i++) {
         var answers = qA[qACount]['answers'][i];
         var newBtn = $('<button>');
         newBtn.addClass('answers redBtn');

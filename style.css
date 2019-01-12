@@ -4,6 +4,7 @@
     align-content: center;
     justify-content: center;
     max-width: 960px;
+    font: white;
 }
 .pokebois {
     max-height: 380px;
