@@ -1,6 +1,6 @@
 
 
-/* <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> */
+/*  */
 
 //globals 
 var rightCount = 0;
@@ -40,12 +40,15 @@ var qA = {
         right: 'Correct!',
         wrong: 'Wrong!',
     }
+    
 };
 
 var start = function () {
     $('.startBtn').on('click', function () {
-        $('.trivSection').empty();
-        createQuestions();
+        alert('Yo!');
+
+        // $('.trivSection').empty();
+        // createQuestions();
 
     });
 
