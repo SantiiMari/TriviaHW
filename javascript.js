@@ -12,7 +12,7 @@ var timer = '';
 // $(document).ready(function () {
 
 var qA = {
-    1:{
+    1: {
         question: "What Pokemon does Pikachu evolve into?",
         choices: ["Jolteon", "Pichu", "Raichu", "Mimikyu"],
         correctAnswer: "Raichu",
@@ -33,7 +33,7 @@ var qA = {
         right: 'Correct!',
         wrong: 'Wrong!',
     },
-    4:{
+    4: {
         question: "Which of these is a starter pokemon?",
         choices: ["Pikachu", "Mudkip", "Growlithe", "Meowth"],
         correctAnswer: "Mudkip",
@@ -83,7 +83,7 @@ var checkAnswer = function () {
     var wrong = qA[qACount]['wrong'];
     console.log(qACount);
 
-    if(userAnswer === correctAnswer) {
+    if (userAnswer === correctAnswer) {
         rightCount++;
         $('.trivSection').empty();
         var newDiv = $('<div>');
@@ -91,35 +91,59 @@ var checkAnswer = function () {
         newDiv.text(right);
         $('.trivSection').append(newDiv);
         clearInterval(timer);
-        qACount ++;
-        if(qACount <=4){
+        qACount++;
+        if (qACount <= 4) {
             setTimeout(
-                function(){
+                function () {
                     $('.trivSection').empty();
                     createQuestions();
                 }, 3500);
-            }
-            else{
-                $('.trivSection').empty();
-                var newDiv = $('<div>');
-                newDiv.addClass('rightAnswer');
-                newDiv.text(right);
-                $('.trivSection').append(newDiv);
-                clearInterval(timer)
-                setTimeout(gameOver, 3500);
-            }
         }
         else {
-            wrongCount++;
             $('.trivSection').empty();
+            var newDiv = $('<div>');
+            newDiv.addClass('rightAnswer');
+            newDiv.text(right);
+            $('.trivSection').append(newDiv);
+            clearInterval(timer)
+            setTimeout(gameOver, 3500);
         }
-    
+    }
+    else {
+        wrongCount++;
 
+        $('.trivSection').empty()
+        var newDiv = $('<div>'); newDiv.addClass('wrongAnswer');
+
+        newDiv.text(wrong);
+
+        $('.trivSection').append(newDiv);
+        clearInterval(timer)
+
+        qACount++; if (qACount <= 3) {
+            setTimeout(function () {
+                $('.trivSection').empty();
+                createQuestions();
+            }, 3500);
+        }
+        else {
+            $('.trivSection').empty();
+            var newDiv = $('<div>');
+            newDiv.addClass('wrongAnswer');
+            newDiv.text(wrong);
+            $('.trivSection').append(newDiv);
+            clearInterval(timer);
+            //Reset
+            setTimeout(gameOver, 3500);
+        }
+    }
 }
 
 
 
-
+var timerStart = function(){
+    //ugly sobbing...
+}
 
 
 
