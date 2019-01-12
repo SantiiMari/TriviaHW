@@ -1,26 +1,18 @@
 
 
 
-$(document).ready(function () {
- 
-    var correctGuesses = 0;
-    var incorrectGuesses = 0;
-    var questionCounter = 0;
-    var time = 15;
-    
-    
-  
-    
 
- 
-    var questions = [
-        {
-            question: "Who is the main character of Uncharted?",
-            choices: ["Nathan Drake", "Aloy", "Master Chief", "Mario"],
-            correctAnswer: "Nathan Drake",
-        },
+ //globals 
+    var rightCount = 0;
+    var wrongCount = 0;
+    var qACount = 0;
+    var trivTime = 15;
+    var timer = 1;
+    
+    $(document).ready(function () {
 
-
+    var qA = [
+        
         {
             question: "What Pokemon does Pikachu evolve into?",
             choices: ["Jolteon", "Pichu", "Raichu", "Mimikyu"],
@@ -50,5 +42,7 @@ $(document).ready(function () {
     ];
 
 
-   
+  
+
+
 });
