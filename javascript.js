@@ -1,6 +1,6 @@
 
 
-
+/* <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> */
 
 //globals 
 var rightCount = 0;
@@ -120,7 +120,7 @@ var checkAnswer = function () {
         $('.trivSection').append(newDiv);
         clearInterval(timer)
 
-        qACount++; if (qACount <= 3) {
+        qACount++; if (qACount <= 4) {
             setTimeout(function () {
                 $('.trivSection').empty();
                 createQuestions();
@@ -139,12 +139,66 @@ var checkAnswer = function () {
     }
 }
 
-
-
-var timerStart = function(){
     //ugly sobbing...
-}
 
-
-
+    var timerStart = function(){ 
+        $('.timerSection').empty();
+    
+        trivTime = 100;
+      
+        var timeTag = $('<div>');
+        timeTag.addClass('time');
+        timeTag.addClass('progress');
+        var progressBar = $('<div>');
+        progressBar.addClass('progress-bar');
+        progressBar.width(trivTime + '%');
+    
+        $('.timerSection').append(timeTag);
+        $('.time').append(progressBar);	
+  
+        timer = setInterval(timeDecrement,100);
+    }
+    var timeDecrement = function(){ 
+       
+        $('.progress-bar').width(trivTime + '%');
+        trivTime--;
+      
+        if(trivTime === -10){
+            userAnswer = false;
+        
+            clearInterval(timer);
+            checkAnswer();
+        }
+        
+    }
+    var gameOver = function(){
+        $('.trivSection').empty()
+        $('.timerSection').empty();
+        var scoreDiv = $('<div>');
+        scoreDiv.addClass('score');
+        scoreDiv.html('Correct: ' + rightCount + '<br>' + 'Wrong: ' + wrongCount);
+        $('.trivSection').append(scoreDiv);
+      
+        var newDiv = $('<div>');
+      
+        newDiv.addClass('gameOver');
+    
+        newDiv.text('Game Over! Play Again ?');
+        $('.trivSection').append(newDiv)
+        var newBtn = $('<button>');
+      
+        newBtn.addClass('redBtn resetBtn');
+       
+        newBtn.text('Reset');
+        $('.trivSection').append(newBtn);
+        trivTime = 100;
+        qACount = 1;
+        rightCount = 0;
+        wrongCount = 0;
+        $('.resetBtn').on('click',function(){
+            $('.trivSection').empty()
+            createQuestions();
+        });
+    }
+      start();
 
