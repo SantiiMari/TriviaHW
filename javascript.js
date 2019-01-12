@@ -41,8 +41,34 @@
 
     ];
 
+    var start = function () {
+        $('.startBtn').on('click', function() {
+            $('.trivSection').empty();
+            createQuestions();
+        
+    });
 
+}
+
+var createQuestions = function(){
+    var questions = qA[qACount]['question'];
+    var newDiv = $('<div>');
+    newDiv.addClass('question');
+    newDiv.text(question);
+    $('.trivSection').append(newDiv);
+    createAnswers();
+}
+
+var createAnswers = function(){
+    var answerLength =qa[qACount]
+}
   
+
+
+
+
+
+
 
 
 });
